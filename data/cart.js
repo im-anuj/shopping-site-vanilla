@@ -23,12 +23,16 @@ export function addToCart(productId) {
         }
     });
 
+    const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+
+    const quantity = Number(quantitySelector.value);
+
     if(matchingItem){
-        matchingItem.quantity++;
+        matchingItem.quantity += quantity; // matchingItem.quantity = matchingItem.quantity + quantiy;
     } else{
         cart.push({
             productId: productId,
-            quantity: 1
+            quantity // this is called shortand property, or we can use quantity: quantity
         });
     }
 
