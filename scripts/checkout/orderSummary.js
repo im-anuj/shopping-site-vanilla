@@ -197,6 +197,7 @@ export function renderOrderSummary(){
 		);
 		quantityLabel.innerHTML = newQuantity;
 
+		renderPaymentSummary();
 		updateCartQuantity();
 	}
 
