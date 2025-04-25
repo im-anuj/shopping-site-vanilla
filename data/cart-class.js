@@ -53,6 +53,7 @@ class Cart {
     }
 
     removeFromCart(productId) {
+        /*
         const newCart = [];
 
         this.cartItems.forEach((cartItem) => {
@@ -62,6 +63,11 @@ class Cart {
         });
 
         cart = newCart;
+        */
+
+        this.cartItems = this.cartItems.filter((cartItem) =>{
+            return cartItem.productId !== productId;
+        })
 
         this.saveToStorage();
     }
@@ -109,24 +115,4 @@ class Cart {
     }
 }
 
-
-const cart = new Cart('cart-oop');
-const businessCart = new Cart('cart-business');
-
-console.log(cart);
-console.log(businessCart);
-
-console.log(businessCart instanceof Cart);
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const cart = new Cart('cart-oop');
