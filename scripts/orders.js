@@ -1,4 +1,5 @@
 import { getProduct, loadProductsFetch } from "../data/products.js";
+import { getDeliveryOption, calculateDeliveryDate, deliveryOptions, calculateDeliveryDateFrom } from "../data/deliveryOptions.js";
 import { orders } from "../data/orders.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { formatCurrency } from "./utils/money.js";
@@ -9,6 +10,7 @@ async function loadPage(){
     let ordersHTML = '';
 
     orders.forEach((order) => {
+        
         const orderTimeString = dayjs(order.orderTime).format('MMMM D');
         ordersHTML += `
             <div class="order-container">
@@ -43,6 +45,14 @@ async function loadPage(){
         order.products.forEach((productDetails) => {
             const productId = productDetails.productId;
             const product = getProduct(productId);
+            
+            const matchedOption = findDeliveryOption(order.orderTime, productDetails.estimatedDeliveryTime);
+            console.log(matchedOption);
+
+            let deliveryDate = 'undefined';
+            if(matchedOption){
+                deliveryDate = calculateDeliveryDateFrom(order.orderTime, matchedOption);
+            }
             productsListHTML += `
                 <div class="product-image-container">
                     <img src="${product.image}">
@@ -53,7 +63,7 @@ async function loadPage(){
                         ${product.name}
                     </div>
                     <div class="product-delivery-date">
-                        Arriving on: ${dayjs(productDetails.estimatedDeliveryTime).format('MMMM D')}
+                        Arriving on: ${deliveryDate}
                     </div>
                     <div class="product-quantity">
                         Quantity: ${productDetails.quantity}
@@ -81,3 +91,17 @@ async function loadPage(){
 }
 
 loadPage();
+
+// all this code for skipping weekends from product-delivery-date
+// to skip weekends we need deliveryOptions.deliveryDays 
+// but the products we get from backend doesnt have deliveryOption, and we cant change backend
+// so here is the code for finding an deliveryOption, which we can use in our function
+function countDaysBetween(startDate, endDate) {
+    // .diff is built-in method of dayjs which calculates tha difference between two dates in days
+    return dayjs(endDate).diff(dayjs(startDate), 'day');
+}
+
+function findDeliveryOption(orderTime, estimatedDeliveryTime){
+    const daysBetween = countDaysBetween(orderTime, estimatedDeliveryTime);
+    return deliveryOptions.find(option => option.deliveryDays === daysBetween) || null;
+}
