@@ -64,7 +64,7 @@ async function loadPage(){
                         ${product.name}
                     </div>
                     <div class="product-delivery-date">
-                        Arriving on: ${deliveryDate}
+                        Arriving on: ${deliveryDate.format('MMMM D')}
                     </div>
                     <div class="product-quantity">
                         Quantity: ${productDetails.quantity}
@@ -116,7 +116,7 @@ function countDaysBetween(startDate, endDate) {
     return dayjs(endDate).diff(dayjs(startDate), 'day');
 }
 
-function findDeliveryOption(orderTime, estimatedDeliveryTime){
+export function findDeliveryOption(orderTime, estimatedDeliveryTime){
     const daysBetween = countDaysBetween(orderTime, estimatedDeliveryTime);
     return deliveryOptions.find(option => option.deliveryDays === daysBetween) || null;
 }

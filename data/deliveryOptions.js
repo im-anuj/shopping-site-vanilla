@@ -76,5 +76,5 @@ export function calculateDeliveryDateFrom(orderTime, deliveryOption){
         }
     }
 
-    return orderDate.format('MMMM D');
+    return orderDate;
 }
