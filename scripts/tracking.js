@@ -36,6 +36,7 @@ async function loadPage(){
     const orderTime = dayjs(order.orderTime);
     const deliveyTime = dayjs(productDetails.estimatedDeliveryTime);
     const percentProgress = ((today - orderTime) / (deliveyTime - orderTime)) * 100;
+    // console.log([today, orderTime, deliveyTime, percentProgress]);
 
     const trackingHTML = `
         <a class="back-to-orders-link link-primary" href="orders.html">

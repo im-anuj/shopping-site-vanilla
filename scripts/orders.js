@@ -119,7 +119,7 @@ loadPage();
 // so here is the code for finding an deliveryOption, which we can use in our function
 function countDaysBetween(startDate, endDate) {
     // .diff is built-in method of dayjs which calculates tha difference between two dates in days
-    return dayjs(endDate).diff(dayjs(startDate), 'day');
+    return dayjs(endDate).diff(dayjs(startDate).startOf('day'), 'day');
 }
 
 export function findDeliveryOption(orderTime, estimatedDeliveryTime){
