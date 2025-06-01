@@ -4,6 +4,10 @@ import { orders } from "../data/orders.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { formatCurrency } from "./utils/money.js";
 import { cart } from "../data/cart-class.js";
+import { renderHeader, updateCartQuantity } from "./shared/header.js";
+
+renderHeader();
+updateCartQuantity();
 
 async function loadPage(){
     await loadProductsFetch(); //for getProduct();
@@ -52,7 +56,8 @@ async function loadPage(){
 
             let deliveryDate = 'undefined';
             if(matchedOption){
-                deliveryDate = calculateDeliveryDateFrom(order.orderTime, matchedOption);
+                const rawDate = calculateDeliveryDateFrom(order.orderTime, matchedOption);
+                deliveryDate = rawDate.format('MMMM D');
             }
             productsListHTML += `
                 <div class="product-image-container">
@@ -64,7 +69,7 @@ async function loadPage(){
                         ${product.name}
                     </div>
                     <div class="product-delivery-date">
-                        Arriving on: ${deliveryDate.format('MMMM D')}
+                        Arriving on: ${deliveryDate}
                     </div>
                     <div class="product-quantity">
                         Quantity: ${productDetails.quantity}
@@ -101,6 +106,7 @@ async function loadPage(){
                     <span class="buy-again-message">Buy it again</span>
                 `;
             }, 1000);
+            updateCartQuantity();
         });
     });
 }

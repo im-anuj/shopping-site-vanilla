@@ -1,8 +1,14 @@
 import { cart } from "../data/cart-class.js";
-import { products, loadProducts } from "../data/products.js"
+import { products, loadProducts, loadProductsFetch } from "../data/products.js"
 import { formatCurrency } from "./utils/money.js";
+import { renderHeader,updateCartQuantity } from "./shared/header.js";
 
-loadProducts(renderProductsGrid);
+renderHeader();
+
+// loadProducts(renderProductsGrid);
+loadProductsFetch().then(() => {
+    renderProductsGrid();
+});
 
 function renderProductsGrid() {
     let productsHTML = '';
@@ -64,13 +70,6 @@ function renderProductsGrid() {
     });
 
     document.querySelector('.js-products-grid').innerHTML = productsHTML;
-
-    function updateCartQuantity() {
-        const cartQuantity = cart.calculateCartQuantity();
-
-        document.querySelector('.js-cart-quantity')
-            .innerHTML = cartQuantity;
-    }
 
     updateCartQuantity();
 
