@@ -47,18 +47,6 @@
   display: none;
 }
 
-@media (max-width: 575px) {
-  .amazon-logo {
-    display: none;
-  }
-
-  .amazon-mobile-logo {
-    display: block;
-    height: 35px;
-    margin-top: 5px;
-  }
-}
-
 .amazon-header-middle-section {
   flex: 1;
   max-width: 850px;
@@ -146,4 +134,49 @@
   
   width: 26px;
   text-align: center;
+}
+
+@media (max-width: 575px) {
+  .amazon-logo {
+    display: none;
+  }
+
+  .amazon-mobile-logo {
+    display: block;       
+    height: 30px;
+    margin-top: 5px;
+  }
+  .amazon-header{
+    height: 50px;
+  }
+  .search-bar{    
+    font-size: 14px;
+    height: 32px;
+    padding-left: 14px;
+  }
+  .search-button{
+    width: 42px;
+    height: 34px;
+  }
+  .search-icon{
+    height: 20px;
+  }
+  .returns-text{
+    font-size: 12px;
+  }
+  .orders-text{
+    font-size: 13px;
+  }
+  .cart-text{
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .header-link{
+    padding: 5px;
+  }
+  .cart-quantity{
+    font-size: 15px;
+    top: 5px;
+    left: 21px;
+  }
 }
