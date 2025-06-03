@@ -38,13 +38,15 @@ async function loadPage(){
     const percentProgress = ((today - orderTime) / (deliveyTime - orderTime)) * 100;
     // console.log([today, orderTime, deliveyTime, percentProgress]);
 
+    const deliveredMessage = today < deliveyTime ? 'Arriving on' : 'Delivered on'
+
     const trackingHTML = `
         <a class="back-to-orders-link link-primary" href="orders.html">
           View all orders
         </a>
 
         <div class="delivery-date">
-          Arriving on ${deliveryDate}
+          ${deliveredMessage} ${deliveryDate}
         </div>
 
         <div class="product-info">

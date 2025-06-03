@@ -12,9 +12,9 @@ export function renderHeader() {
       </div>
 
       <div class="amazon-header-middle-section">
-        <input class="search-bar" type="text" placeholder="Search">
+        <input class="search-bar js-search-bar" type="text" placeholder="Search">
 
-        <button class="search-button">
+        <button class="search-button js-search-button">
           <img class="search-icon" src="images/icons/search-icon.png">
         </button>
       </div>
@@ -34,6 +34,18 @@ export function renderHeader() {
     `;
 
   document.querySelector('.js-amazon-header').innerHTML = headerHTML;
+
+  function goToSearchPage(){
+    const search = document.querySelector('.js-search-bar').value;
+    window.location.href = `amazon.html?search=${search}`;
+  }
+
+  document.querySelector('.js-search-button').addEventListener('click', goToSearchPage);
+  document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+      goToSearchPage();
+    }
+  });
 }
 
 export function updateCartQuantity() {
