@@ -78,3 +78,18 @@ export function calculateDeliveryDateFrom(orderTime, deliveryOption){
 
     return orderDate;
 }
+
+// THIS CODE FOR order.js FILE
+// all this code for skipping weekends from product-delivery-date
+// to skip weekends we need deliveryOptions.deliveryDays 
+// but the products we get from backend doesnt have deliveryOption, and we cant change backend
+// so here is the code for finding an deliveryOption, which we can use in our function
+function countDaysBetween(startDate, endDate) {
+    // .diff is built-in method of dayjs which calculates tha difference between two dates in days
+    return dayjs(endDate).diff(dayjs(startDate).startOf('day'), 'day');
+}
+
+export function findDeliveryOption(orderTime, estimatedDeliveryTime){
+    const daysBetween = countDaysBetween(orderTime, estimatedDeliveryTime);
+    return deliveryOptions.find(option => option.deliveryDays === daysBetween) || null;
+}

@@ -1,7 +1,7 @@
 import { getOrder } from "../data/orders.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
 import { calculateDeliveryDateFrom } from "../data/deliveryOptions.js";
-import { findDeliveryOption } from "./orders.js";
+import { findDeliveryOption } from "../data/deliveryOptions.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { renderHeader, updateCartQuantity } from "./shared/header.js";
 

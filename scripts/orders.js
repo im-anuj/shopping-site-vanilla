@@ -1,5 +1,5 @@
 import { getProduct, loadProductsFetch } from "../data/products.js";
-import { getDeliveryOption, calculateDeliveryDate, deliveryOptions, calculateDeliveryDateFrom } from "../data/deliveryOptions.js";
+import { getDeliveryOption, calculateDeliveryDate, deliveryOptions, calculateDeliveryDateFrom, findDeliveryOption } from "../data/deliveryOptions.js";
 import { orders } from "../data/orders.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { formatCurrency } from "./utils/money.js";
@@ -112,17 +112,3 @@ async function loadPage(){
 }
 
 loadPage();
-
-// all this code for skipping weekends from product-delivery-date
-// to skip weekends we need deliveryOptions.deliveryDays 
-// but the products we get from backend doesnt have deliveryOption, and we cant change backend
-// so here is the code for finding an deliveryOption, which we can use in our function
-function countDaysBetween(startDate, endDate) {
-    // .diff is built-in method of dayjs which calculates tha difference between two dates in days
-    return dayjs(endDate).diff(dayjs(startDate).startOf('day'), 'day');
-}
-
-export function findDeliveryOption(orderTime, estimatedDeliveryTime){
-    const daysBetween = countDaysBetween(orderTime, estimatedDeliveryTime);
-    return deliveryOptions.find(option => option.deliveryDays === daysBetween) || null;
-}
