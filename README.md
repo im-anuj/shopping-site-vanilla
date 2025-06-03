@@ -53,7 +53,7 @@ Built with curiosity, lots of trial & error, and a desire to improve in JavaScri
 
 ---
 
-##Live Link - https://im-anuj.github.io/amazon-project-vanilla-js-/
+## Live Link - https://im-anuj.github.io/amazon-project-vanilla-js-/
 
 ---
 
