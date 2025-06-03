@@ -33,5 +33,6 @@ window.addEventListener('pageshow', (event) => {
     renderOrderSummary();
     renderPaymentSummary();
     updateCartQuantity();
+    location.reload();
   }
 });
