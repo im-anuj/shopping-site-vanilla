@@ -48,8 +48,12 @@ Built with curiosity, lots of trial & error, and a desire to improve in JavaScri
 
 ## 👨‍💻 Author
 
-**Anuj Rawat** — Beginner Web Developer & JS Learner  
+**Anuj Rawat**  
 📅 Project created in 2025
+
+---
+
+##Live Link - https://im-anuj.github.io/amazon-project-vanilla-js-/
 
 ---
 
