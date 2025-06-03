@@ -1,11 +1,9 @@
 import { cart } from "../data/cart-class.js";
-import { products, loadProducts, loadProductsFetch } from "../data/products.js"
-import { formatCurrency } from "./utils/money.js";
+import { products, loadProductsFetch } from "../data/products.js"
 import { renderHeader,updateCartQuantity } from "./shared/header.js";
 
 renderHeader();
 
-// loadProducts(renderProductsGrid);
 loadProductsFetch().then(() => {
     renderProductsGrid();
 });
@@ -15,7 +13,6 @@ function renderProductsGrid() {
 
     const url = new URLSearchParams(location.search);
     const search = url.get('search');
-    // const searchTerm = search ? search.toLowerCase() : '';
 
     let filteredProducts = products;
     if(search){

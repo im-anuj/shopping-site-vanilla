@@ -34,7 +34,7 @@ export function addToCart(productId, quantity) {
     });
 
     if(matchingItem){
-        matchingItem.quantity += quantity; // matchingItem.quantity = matchingItem.quantity + quantiy;
+        matchingItem.quantity += quantity;
     } else{
         cart.push({
             productId: productId,

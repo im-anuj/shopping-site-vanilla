@@ -1,5 +1,5 @@
 import { getProduct, loadProductsFetch } from "../data/products.js";
-import { getDeliveryOption, calculateDeliveryDate, deliveryOptions, calculateDeliveryDateFrom, findDeliveryOption } from "../data/deliveryOptions.js";
+import { calculateDeliveryDateFrom, findDeliveryOption } from "../data/deliveryOptions.js";
 import { orders } from "../data/orders.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { formatCurrency } from "./utils/money.js";
