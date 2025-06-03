@@ -37,7 +37,7 @@ export function renderHeader() {
 
   function goToSearchPage(){
     const search = document.querySelector('.js-search-bar').value;
-    window.location.href = `amazon.html?search=${search}`;
+    window.location.href = `index.html?search=${search}`;
   }
 
   document.querySelector('.js-search-button').addEventListener('click', goToSearchPage);

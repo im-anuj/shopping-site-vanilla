@@ -21,6 +21,9 @@ class Cart {
     saveToStorage() {
         localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
+    loadFromStorage(){
+        this.#loadFromStorage();
+    }
 
     addToCart(productId, quantity) {
         let matchingItem;
