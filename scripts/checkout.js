@@ -3,6 +3,7 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import { loadProductsFetch } from "../data/products.js";
 import { loadCartFetch } from "../data/cart.js";
+import { updateCartQuantity } from "./shared/header.js";
 
 async function loadPage(){
 
@@ -31,5 +32,6 @@ window.addEventListener('pageshow', (event) => {
     renderCheckoutHeader();
     renderOrderSummary();
     renderPaymentSummary();
+    updateCartQuantity();
   }
 });
