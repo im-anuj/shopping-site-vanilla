@@ -58,3 +58,6 @@ Built with curiosity, lots of trial & error, and a desire to improve in JavaScri
 ---
 
 Thank you for checking out my project! 😊  
+
+Note - This is an educational project and not affiliated with Amazon.
+
