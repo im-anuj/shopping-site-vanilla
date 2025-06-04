@@ -7,7 +7,7 @@ export function renderHeader() {
           <img class="amazon-logo"
             src="images/amazon-logo-white.png">
           <img class="amazon-mobile-logo"
-            src="images/amazon-mobile-logo-white.png">
+            src="images/mobile-logo-white.png">
         </a>
       </div>
 
