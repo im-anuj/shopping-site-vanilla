@@ -61,3 +61,5 @@ Thank you for checking out my project! 😊
 
 Note - This is an educational project and not affiliated with Amazon.
 
+> ⚠️ **Disclaimer**:  
+> This project is a personal educational exercise. It is not affiliated with or endorsed by Amazon or any other company. All trademarks belong to their respective owners.
